@@ -49,6 +49,9 @@ public class PinyinToneReverse implements IPinyinToneReverse {
 
         for(String line : lines) {
             String[] strings = line.split(PunctuationConst.COLON);
+            if (strings.length < 2) {
+                continue;
+            }
             List<String> pinyinList = StringUtil.splitToList(strings[1]);
             final String hanzi = strings[0];
 

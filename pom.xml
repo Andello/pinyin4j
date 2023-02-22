@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.houbb</groupId>
-    <artifactId>pinyin</artifactId>
-    <version>0.3.1</version>
+    <groupId>io.github.andello</groupId>
+    <artifactId>pinyin4j</artifactId>
+    <version>0.3.2</version>
 
     <properties>
         <!--============================== All PLUGINS START ==============================-->
@@ -161,19 +161,26 @@
                 <artifactId>cobertura-maven-plugin</artifactId>
             </plugin>
             <!--=================================== coveralls END ===================================-->
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.7</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>oss</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                </configuration>
+            </plugin>
         </plugins>
 
     </build>
 
     <!--============================== ADD For sonatype START ==============================-->
-    <name>pinyin</name>
+    <name>pinyin4j</name>
     <description>The pinyin tool for java.</description>
+    <url>https://github.com/andello/pinyin4j</url>
 
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>7</version>
-    </parent>
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -182,15 +189,15 @@
         </license>
     </licenses>
     <scm>
-        <url>https://github.com/houbb/pinyin</url>
-        <connection>https://github.com/houbb/pinyin.git</connection>
-        <developerConnection>https://houbb.github.io/</developerConnection>
+        <url>https://github.com/andello/pinyin4j</url>
+        <connection>https://github.com/andello/pinyin4j</connection>
+        <developerConnection>https://andello.github.io/</developerConnection>
     </scm>
     <developers>
         <developer>
-            <name>houbb</name>
-            <email>houbinbin.echo@gmail.com</email>
-            <url>https://houbb.github.io/</url>
+            <name>andello</name>
+            <email>svhero658@gmail.com</email>
+            <url>https://andello.github.io/</url>
         </developer>
     </developers>
     <!--============================== ADD For sonatype END ==============================-->
@@ -237,6 +244,7 @@
                         <version>1.5</version>
                         <executions>
                             <execution>
+                                <id>sign-artifacts</id>
                                 <phase>verify</phase>
                                 <goals>
                                     <goal>sign</goal>
@@ -249,11 +257,11 @@
             <distributionManagement>
                 <snapshotRepository>
                     <id>oss</id>
-                    <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
                 </snapshotRepository>
                 <repository>
                     <id>oss</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
                 </repository>
             </distributionManagement>
         </profile>

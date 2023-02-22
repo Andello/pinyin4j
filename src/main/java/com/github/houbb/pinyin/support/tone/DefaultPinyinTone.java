@@ -118,6 +118,9 @@ public class DefaultPinyinTone extends AbstractPinyinTone {
 
                 for(String line : lines) {
                     String[] strings = line.split(PunctuationConst.COLON);
+                    if (strings.length < 2) {
+                        continue;
+                    }
                     List<String> pinyinList = StringUtil.splitToList(strings[1]);
 
                     final String word = strings[0];
@@ -151,6 +154,9 @@ public class DefaultPinyinTone extends AbstractPinyinTone {
                 for(String line : lines) {
                     String[] strings = line.split(PunctuationConst.COLON);
                     String word = strings[0];
+                    if (strings.length < 2) {
+                        continue;
+                    }
                     phraseMap.put(word, strings[1]);
                 }
 
